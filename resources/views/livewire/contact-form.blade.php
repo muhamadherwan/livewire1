@@ -5,7 +5,6 @@
             <input type="text" class="form-control" id="exampleInputName" placeholder="Enter name" wire:model="name">
             @error('name') <span class="text-danger">{{ $message }}</span> @enderror
         </div>
-
         <div class="form-group">
             <label for="exampleInputEmail">Email</label>
             <input type="text" class="form-control" id="exampleInputEmail" placeholder="Enter name" wire:model="email">
@@ -19,5 +18,9 @@
         </div>
 
         <button type="submit" class="btn btn-primary">Save Contact</button>
+
+        @if ($success)
+            <div class="alert alert-success mt-2">Successfully saved.</div>
+        @endif
     </form>
 </div>
