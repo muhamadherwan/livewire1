@@ -19,8 +19,11 @@
 
         <button type="submit" class="btn btn-primary">Save Contact</button>
 
-        @if ($success)
-            <div class="alert alert-success mt-2">Successfully saved.</div>
-        @endif
+{{--        @if ($success)--}}
+{{--            <div class="alert alert-success mt-2">Successfully saved.</div>--}}
+{{--        @endif--}}
+        <div>
+        {{ $successMessage }}
+        </div>
     </form>
 </div>

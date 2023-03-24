@@ -64,6 +64,7 @@
             margin-bottom: 30px;
         }
     </style>
+    @livewireStyles
 </head>
 <body>
 <div class="container mt-5">

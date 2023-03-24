@@ -10,13 +10,19 @@ class ContactForm extends Component
     public $name;
     public $email;
     public $body;
-    public $success = false;
+//    public $success = false;
+    public $successMessage;
 
     protected $rules = [
             'name' => 'required|min:6',
             'email' => 'required|email',
             'body' => 'required'
     ];
+
+    public function updated($propertyName)
+    {
+        $this->validateOnly($propertyName);
+    }
 
     public function submit()
     {
@@ -26,13 +32,30 @@ class ContactForm extends Component
 //            'body' => 'required',
 //        ]);
 
-//            Contact::create($validatedData);
-//        return redirect()->to('/form');
 
+//            Contact::create($validatedData);
+//        return redirect()->to('/form'); 
         $this->validate();
         Contact::create($this->validate());
 
-        $this->success = true;
+//        $this->success = true;
+
+        // if retun to same page after submit with flash message
+//        $this->successMessage = 'Contact is saved!';
+//        $this->resetForm();
+
+        // if want to redirect ot other page with flash message
+        session()->flash('message', 'Post successfully updated.');
+        return redirect()->to('/');
+
+
+    }
+
+    public function resetForm()
+    {
+        $this->name = '';
+        $this->email = '';
+        $this->body = '';
     }
 
     public function render()
