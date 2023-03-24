@@ -34,7 +34,7 @@ class ContactForm extends Component
 
 
 //            Contact::create($validatedData);
-//        return redirect()->to('/form'); 
+//        return redirect()->to('/form');
         $this->validate();
         Contact::create($this->validate());
 

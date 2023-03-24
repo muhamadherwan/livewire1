@@ -21,4 +21,6 @@ Route::get('/form', function () {
     return view('form');
 });
 
-
+Route::get('/employees', function () {
+    return view('home');
+});
