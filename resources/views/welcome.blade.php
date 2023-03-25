@@ -25,6 +25,7 @@
                  @livewire('category-form')
              </div>
 {{--            <livewire:counter />--}}
+
 {{--            @livewire('form1')--}}
         </div>
     @livewireScripts

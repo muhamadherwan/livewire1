@@ -8,29 +8,60 @@ use Livewire\Component;
 class CategoryForm extends Component
 {
     public $name;
-    public $successMessage;
+//    public $fields = [];
 
-    protected $rules = [
-        'name' => 'required|min:6',
-    ];
 
-    public function updated($propertyName)
+    public $rules = [];
+    public $rows = [];
+
+    public function addRow()
     {
-        $this->validateOnly($propertyName);
+        $this->rows[] = [
+            'name' => '',
+        ];
     }
 
-    public function submit()
+    public function removeRow($index)
     {
-        $validatedData = $this->validate();
-        Category::create($validatedData);
-
-        $this->successMessage = 'Category is saved!';
-        $this->resetForm();
+        unset($this->rows[$index]);
+        $this->rows = array_values($this->rows);
     }
 
-    public function resetForm()
+//    public function store()
+//    {
+//        $this->validate([
+//            'category.*.name' => 'required',
+//        ]);
+//
+//        foreach ($this->employees as $employee) {
+//            Category::create([
+//                'name' => $employee['name']
+//            ]);
+//        }
+//
+//        session()->flash('message', 'Category have been added successfully.');
+//
+//        $this->reset();
+//    }
+
+    public function save()
     {
-        $this->name = '';
+//        $validatedData = $this->validate($this->rules);
+//
+        foreach ($this->rows as $row) {
+            if (!empty(trim($row['name']))) {
+                // Save row to database
+                Category::create([
+                    'name' => $row['name'],
+                ]);
+            }
+        }
+
+        // Reset the form
+        $this->rows = [];
+        $this->rules = [];
+
+        session()->flash('message', 'Form submitted successfully!');
     }
 
     public function render()
