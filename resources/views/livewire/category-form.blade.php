@@ -17,11 +17,17 @@
             <button type="submit">Save</button>
         </div>
 
-        <div class="mb-4">
-            <label for="name_0">Name</label>
-            <input type="text" id="name_0" wire:model.defer="rows.0.name">
-            @error('rows.0.name') <span class="error">{{ $message }}</span> @enderror
-        </div>
+{{--        <div class="mb-4">--}}
+{{--            <label for="name_0">Name</label>--}}
+{{--            <input type="text" id="name_0" wire:model.defer="rows.0.name">--}}
+{{--            @error('rows.0.name') <span class="error">{{ $message }}</span> @enderror--}}
+{{--        </div>--}}
+
+                <div class="mb-4">
+                    <label for="cat1">Name</label>
+                    <input type="text" id="cat1" wire:model.defer="cat1">
+                    @error('cat1') <span class="error">{{ $message }}</span> @enderror
+                </div>
 
 
 
@@ -35,10 +41,6 @@
         <div class="mb-4">
             <button type="button" wire:click.prevent="removeRow({{ $index }})">Remove</button>
         </div>
-
-{{--        <div class="mb-4">--}}
-{{--            <button type="button" wire:click.prevent="removeRow({{ $index + 1 }})">Remove</button>--}}
-{{--        </div>--}}
     @endforeach
 
     </form>

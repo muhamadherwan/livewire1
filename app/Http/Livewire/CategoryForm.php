@@ -11,8 +11,12 @@ class CategoryForm extends Component
 //    public $fields = [];
 
 
-    public $rules = [];
+//    public $rules = [];
     public $rows = [];
+    public $cat1;
+//    public $rules = [
+//        'rows.*.name' => 'required',
+//    ];
 
     public function addRow()
     {
@@ -47,14 +51,22 @@ class CategoryForm extends Component
     public function save()
     {
 //        $validatedData = $this->validate($this->rules);
-//
+
+        $this->validate([
+
+            'cat1' => 'required',
+            'rows.*.name' => 'required',
+        ]);
+
+        Category::create($this->cat1);
+
         foreach ($this->rows as $row) {
-            if (!empty(trim($row['name']))) {
+//            if (!empty(trim($row['name']))) {
                 // Save row to database
                 Category::create([
                     'name' => $row['name'],
                 ]);
-            }
+//            }
         }
 
         // Reset the form

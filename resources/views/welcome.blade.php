@@ -22,7 +22,7 @@
          <div class="container">
              <div class="w-10/12 mx-auto mt-10 shadow-sm p-2">
 {{--                <livewire:contacts-manager/>--}}
-                 @livewire('category-form')
+                 @livewire('form2')
              </div>
 {{--            <livewire:counter />--}}
 
