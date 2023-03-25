@@ -6,7 +6,8 @@
 </head>
 <body>
 <div class="container">
-    <livewire:dynamic-form />
+{{--    <livewire:dynamic-form />--}}
+    @livewire('form1')
 </div>
 
 @livewireScripts
