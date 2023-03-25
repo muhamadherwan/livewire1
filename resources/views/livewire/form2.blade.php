@@ -1,13 +1,18 @@
 <div>
+{{--    default form--}}
+    <div>
+        <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+               type="text" placeholder="name" wire:model.defer="nameD" wire:dirty.class="border-red-500"
+        >
+        @error('nameD') <span class="error mb-5">{{ $message }}</span> @enderror
+    </div>
+
+    {{--    dynamic form--}}
 {{--        <form wire:submit.prevent="submit">--}}
     @foreach ($names as $index => $name)
         <div>
-{{--            <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"--}}
-{{--                   type="text" placeholder="name" wire:model="names.{{ $index }}">--}}
-{{--            @error('names.'.$index) <span class="error mb-5">{{ $message }}</span> @enderror--}}
-
-            <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                   type="text" placeholder="name" wire:model="names.{{ $index }}" wire:dirty.class="border-red-500"
+            <input class="shadow appearance-none border rounded w-full py-2 px-3 mt-5 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                   type="text" placeholder="name" wire:model.defer="names.{{ $index }}" wire:dirty.class="border-red-500"
             >
             @error('names.'.$index) <span class="error mb-5">{{ $message }}</span> @enderror
 

@@ -7,25 +7,35 @@ use Livewire\Component;
 
 class Form2 extends Component
 {
+    public $nameD;
     public $names = [];
     public $count = 1;
     public $successMessage;
-    public $error = '';
-
 
     public function rules()
     {
         return [
+            'nameD' => 'required|min:3|max:255',
             'names.*' => 'required|min:3|max:255',
         ];
     }
 
-    public function updated($field)
+    public function messages()
     {
-        $this->validateOnly($field, [
-            'names.*' => 'required|min:3|max:255',
-        ]);
+        return [
+            'names.*.required' => 'This name field is required.',
+            'names.*.min' => 'This name field must be at least 3 characters',
+            'nameD.required' => 'This name field is required.',
+            'nameD.min' => 'This name field must be at least 3 characters',
+        ];
     }
+
+//    public function updated($field)
+//    {
+//        $this->validateOnly($field, [
+//            'names.*' => 'required|min:3|max:255',
+//        ]);
+//    }
 
 
     public function addNameField()
@@ -51,6 +61,12 @@ class Form2 extends Component
 //        }
 
         $hasName = false;
+
+        if (!empty(trim($this->nameD))) {
+            $hasName = true;
+            Category::create(['name' => $this->nameD]);
+        }
+
         foreach ($this->names as $name) {
             if (!empty(trim($name))) {
                 $hasName = true;
@@ -68,6 +84,12 @@ class Form2 extends Component
             $this->successMessage = 'Data is saved!';
         }
 
+        // clear the form data only if there are no errors
+        if (!$this->getErrorBag()->hasAny()) {
+            $this->nameD = '';
+            $this->names = [];
+            $this->count = 1;
+        }
     }
 
 
