@@ -9,7 +9,8 @@ class Contact extends Model
 {
     use HasFactory;
 
+    protected $connection = 'sqlite';
     protected $fillable = [
-        'name', 'email', 'body',
+        'name', 'email'
     ];
 }
