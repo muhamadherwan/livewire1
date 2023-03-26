@@ -3,10 +3,12 @@
 namespace App\Http\Livewire;
 
 use App\Models\Category;
+use App\Models\Contact;
 use Livewire\Component;
 
 class QuotationForm extends Component
 {
+    public $contactName;
     public $categoryFirst;
     public $categories = [];
     public $count = 1;
@@ -15,6 +17,7 @@ class QuotationForm extends Component
     public function rules()
     {
         return [
+            'contactName' => 'required|min:3|max:255',
             'categoryFirst' => 'required|min:3|max:255',
             'categories.*' => 'required|min:3|max:255',
         ];
@@ -23,6 +26,7 @@ class QuotationForm extends Component
     public function messages()
     {
         return [
+            'contactName.required' => 'This Contact name is required.',
             'categories.*.required' => 'This Category name is required.',
             'categories.*.min' => 'This Category name must be at least 3 characters',
             'categoryFirst.required' => 'This Category name is required.',
@@ -49,6 +53,11 @@ class QuotationForm extends Component
 
         $hasInput = false;
 
+        if (!empty(trim($this->contactName))) {
+            $hasInput = true;
+            Contact::create(['name' => $this->contactName]);
+        }
+
         if (!empty(trim($this->categoryFirst))) {
             $hasInput = true;
             Category::create(['name' => $this->categoryFirst]);
@@ -73,12 +82,13 @@ class QuotationForm extends Component
 
         // clear the form data only if there are no errors
         if (!$this->getErrorBag()->hasAny()) {
+            $this->contactName = '';
             $this->categoryFirst = '';
             $this->categories = [];
             $this->count = 1;
         }
     }
-    
+
     public function render()
     {
         return view('livewire.quotation-form');
