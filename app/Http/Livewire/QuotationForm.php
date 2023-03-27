@@ -28,17 +28,6 @@ class QuotationForm extends Component
 
         ];
 
-//        if ($this->categoryFirst) {
-//            $rules['catChildItemFirst'] = 'required|min:3|max:255';
-//        }
-//
-//        // Only validate the field if it hasn't been removed
-//        foreach ($this->categories as $index => $category) {
-//            if (isset($this->categories[$index])) {
-//                $rules['categories.'.$index] = 'required|min:3|max:255';
-//            }
-//        }
-
         return $rules;
     }
 
@@ -101,9 +90,6 @@ class QuotationForm extends Component
                 Category::create(['name' => $category]);
             }
         }
-//
-//        $this->categories = [];
-//        $this->count = 1;
 
 //        session()->flash('message', 'Name successfully saved.');
         $this->successMessage = 'data is saved!';
@@ -119,7 +105,6 @@ class QuotationForm extends Component
             $this->contactName = '';
 
 //            $this->catChildItemFirst = '';
-
 
             $this->categories = [];
             $this->count = 1;

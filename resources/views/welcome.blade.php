@@ -23,7 +23,8 @@
              <div class="w-10/12 mx-auto mt-10 shadow-sm p-2">
 {{--                <livewire:contacts-manager/>--}}
 {{--                 @livewire('form2')--}}
-                 @livewire('quotation-form')
+{{--                 @livewire('quotation-form')--}}
+                 @livewire('quotation-form2')
              </div>
 {{--            <livewire:counter />--}}
 

@@ -2,7 +2,7 @@
     {{--    employee name field--}}
     <div>
         <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-               type="text" placeholder="Contact Name" wire:model.defer="contactName" wire:dirty.class="border-red-500"
+               type="text" placeholder="Customer" wire:model.defer="contactName" wire:dirty.class="border-red-500"
         >
         @error('contactName') <span class="error mb-5">{{ $message }}</span> @enderror
     </div>
