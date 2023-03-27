@@ -8,30 +8,45 @@
     </div>
 
     {{--    default form--}}
-    <div>
-        <input class="shadow appearance-none border rounded w-full py-2 px-3 mt-5 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-               type="text" placeholder="Category Name" wire:model.defer="categoryFirst" wire:dirty.class="border-red-500"
-        >
-        @error('categoryFirst') <span class="error mb-5">{{ $message }}</span> @enderror
-    </div>
+    <div class="bg-indigo-100 mt-5">
+        <div class="px-5">
+            <input class="shadow appearance-none border rounded w-full py-2 px-3 mt-5 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                   type="text" placeholder="Category Name" wire:model.defer="categoryFirst" wire:dirty.class="border-red-500"
+            >
+            @error('categoryFirst') <span class="error mb-5">{{ $message }}</span> @enderror
+        </div>
     {{--    default form default item form--}}
-    <div>
-        <input class="shadow appearance-none border rounded w-full py-2 px-3 mt-5 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-               type="text" placeholder="Item Name" wire:model.defer="itemFirst" wire:dirty.class="border-red-500"
-        >
-        @error('itemFirst') <span class="error mb-5">{{ $message }}</span> @enderror
+        <div class="px-5">
+            <input class="shadow appearance-none border rounded w-full py-2 px-3 mt-5 mb-5 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                   type="text" placeholder="Item Name" wire:model.defer="itemFirst" wire:dirty.class="border-red-500"
+            >
+            @error('itemFirst') <span class="error mb-5">{{ $message }}</span> @enderror
+        </div>
     </div>
 
     {{--    dynamic form--}}
     {{--        <form wire:submit.prevent="submit">--}}
     @foreach ($categories as $index => $category)
-        <div>
+        <div class="bg-indigo-100 mt-5">
+{{--            <div class="divide-y divide-dashed">--}}
+{{--            where</div>--}}
+            <div class="px-5">
+
             <input class="shadow appearance-none border rounded w-full py-2 px-3 mt-5 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                    type="text" placeholder="Category name" wire:model.defer="categories.{{ $index }}" wire:dirty.class="border-red-500"
             >
             @error('categories.'.$index) <span class="error mb-5">{{ $message }}</span> @enderror
+            </div>
+            {{--    default form default item form--}}
+{{--            <div>--}}
+{{--                <input class="shadow appearance-none border rounded w-full py-2 px-3 mt-5 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"--}}
+{{--                       type="text" placeholder="Item Name" wire:model.defer="catChildItemFirst" wire:dirty.class="border-red-500"--}}
+{{--                >--}}
+{{--                @error('catChildItemFirst') <span class="error mb-5">{{ $message }}</span> @enderror--}}
+{{--            </div>--}}
 
-            <div>
+        {{-- remove button--}}
+            <div class="px-5">
                 <button class="bg-pink-500 hover:bg-pink-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline mt-5 mb-5" type="button"
                         wire:click.prevent="removeNameField({{ $index }})">
                     Remove
