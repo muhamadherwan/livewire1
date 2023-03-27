@@ -24,7 +24,8 @@
 {{--                <livewire:contacts-manager/>--}}
 {{--                 @livewire('form2')--}}
 {{--                 @livewire('quotation-form')--}}
-                 @livewire('quotation-form2')
+{{--                 @livewire('quotation-form2')--}}
+                 @livewire('quotation-form3')
              </div>
 {{--            <livewire:counter />--}}
 
